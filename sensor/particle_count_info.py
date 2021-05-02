@@ -4,8 +4,7 @@ from datetime import date
 
 class ParticleData(HouseInfo):
 
-    @staticmethod
-    def _convert_data(data):
+    def _convert_data(self, data):
         recs = []
         for rec in data:
             recs.append(float(rec))
@@ -20,11 +19,7 @@ class ParticleData(HouseInfo):
         return self._convert_data(recs)
 
     def get_data_concentrations(self, data):
-        particulate = {
-            "good": 0,
-            "moderate": 0,
-            "bad": 0
-        }
+        particulate = {"good": 0, "moderate": 0, "bad": 0}
         for rec in data:
             if rec <= 50.0:
                 particulate["good"] += 1
